@@ -3,19 +3,29 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1226C58C2AD0E0B5EA4E8B94 /* Pods_FlowApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E94D10020AC2AF164AEA56 /* Pods_FlowApp.framework */; };
 		AE449BCE249108F300414898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BCD249108F300414898 /* AppDelegate.swift */; };
 		AE449BD0249108F300414898 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BCF249108F300414898 /* SceneDelegate.swift */; };
 		AE449BD2249108F300414898 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BD1249108F300414898 /* ViewController.swift */; };
 		AE449BD5249108F300414898 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE449BD3249108F300414898 /* Main.storyboard */; };
 		AE449BD7249108F600414898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE449BD6249108F600414898 /* Assets.xcassets */; };
 		AE449BDA249108F600414898 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE449BD8249108F600414898 /* LaunchScreen.storyboard */; };
+		AE449BE224910C2E00414898 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BE124910C2E00414898 /* Memo.swift */; };
+		AE449BE624910CB000414898 /* MemoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BE524910CB000414898 /* MemoCollection.swift */; };
+		AE449BE824910DB200414898 /* WritePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BE724910DB200414898 /* WritePopupViewController.swift */; };
+		AE449BEB2491272500414898 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BEA2491272500414898 /* DB.swift */; };
+		AE449BEE2491359100414898 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = AE449BED2491359100414898 /* Realm */; };
+		AE449BF02491359100414898 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE449BEF2491359100414898 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42E94D10020AC2AF164AEA56 /* Pods_FlowApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlowApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		600E3D0C5077A9AE0C944886 /* Pods-FlowApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowApp.debug.xcconfig"; path = "Target Support Files/Pods-FlowApp/Pods-FlowApp.debug.xcconfig"; sourceTree = "<group>"; };
+		707254104532542CB9E5947F /* Pods-FlowApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlowApp.release.xcconfig"; path = "Target Support Files/Pods-FlowApp/Pods-FlowApp.release.xcconfig"; sourceTree = "<group>"; };
 		AE449BCA249108F300414898 /* FlowApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE449BCD249108F300414898 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE449BCF249108F300414898 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +34,10 @@
 		AE449BD6249108F600414898 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE449BD9249108F600414898 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE449BDB249108F600414898 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE449BE124910C2E00414898 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		AE449BE524910CB000414898 /* MemoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCollection.swift; sourceTree = "<group>"; };
+		AE449BE724910DB200414898 /* WritePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritePopupViewController.swift; sourceTree = "<group>"; };
+		AE449BEA2491272500414898 /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +45,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE449BF02491359100414898 /* RealmSwift in Frameworks */,
+				AE449BEE2491359100414898 /* Realm in Frameworks */,
+				1226C58C2AD0E0B5EA4E8B94 /* Pods_FlowApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		879A6B983C26200C901F239F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42E94D10020AC2AF164AEA56 /* Pods_FlowApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AE449BC1249108F300414898 = {
 			isa = PBXGroup;
 			children = (
 				AE449BCC249108F300414898 /* FlowApp */,
 				AE449BCB249108F300414898 /* Products */,
+				EEAF54DF2B8FB699648D3FE2 /* Pods */,
+				879A6B983C26200C901F239F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +85,50 @@
 			children = (
 				AE449BCD249108F300414898 /* AppDelegate.swift */,
 				AE449BCF249108F300414898 /* SceneDelegate.swift */,
-				AE449BD1249108F300414898 /* ViewController.swift */,
+				AE449BE92491271300414898 /* DB */,
+				AE449BE424910C4200414898 /* Controller */,
+				AE449BE324910C3500414898 /* Model */,
 				AE449BD3249108F300414898 /* Main.storyboard */,
 				AE449BD6249108F600414898 /* Assets.xcassets */,
 				AE449BD8249108F600414898 /* LaunchScreen.storyboard */,
 				AE449BDB249108F600414898 /* Info.plist */,
 			);
 			path = FlowApp;
+			sourceTree = "<group>";
+		};
+		AE449BE324910C3500414898 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE449BE124910C2E00414898 /* Memo.swift */,
+				AE449BE524910CB000414898 /* MemoCollection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE449BE424910C4200414898 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AE449BD1249108F300414898 /* ViewController.swift */,
+				AE449BE724910DB200414898 /* WritePopupViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AE449BE92491271300414898 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				AE449BEA2491272500414898 /* DB.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		EEAF54DF2B8FB699648D3FE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				600E3D0C5077A9AE0C944886 /* Pods-FlowApp.debug.xcconfig */,
+				707254104532542CB9E5947F /* Pods-FlowApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +138,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE449BDE249108F600414898 /* Build configuration list for PBXNativeTarget "FlowApp" */;
 			buildPhases = (
+				954E661DD549D461008C0FC7 /* [CP] Check Pods Manifest.lock */,
 				AE449BC6249108F300414898 /* Sources */,
 				AE449BC7249108F300414898 /* Frameworks */,
 				AE449BC8249108F300414898 /* Resources */,
+				F339ABD2ADB807E5594D4488 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = FlowApp;
+			packageProductDependencies = (
+				AE449BED2491359100414898 /* Realm */,
+				AE449BEF2491359100414898 /* RealmSwift */,
+			);
 			productName = FlowApp;
 			productReference = AE449BCA249108F300414898 /* FlowApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +181,9 @@
 				Base,
 			);
 			mainGroup = AE449BC1249108F300414898;
+			packageReferences = (
+				AE449BEC2491359000414898 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = AE449BCB249108F300414898 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +206,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		954E661DD549D461008C0FC7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlowApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F339ABD2ADB807E5594D4488 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowApp/Pods-FlowApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FlowApp/Pods-FlowApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FlowApp/Pods-FlowApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE449BC6249108F300414898 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,7 +255,11 @@
 			files = (
 				AE449BD2249108F300414898 /* ViewController.swift in Sources */,
 				AE449BCE249108F300414898 /* AppDelegate.swift in Sources */,
+				AE449BEB2491272500414898 /* DB.swift in Sources */,
 				AE449BD0249108F300414898 /* SceneDelegate.swift in Sources */,
+				AE449BE824910DB200414898 /* WritePopupViewController.swift in Sources */,
+				AE449BE624910CB000414898 /* MemoCollection.swift in Sources */,
+				AE449BE224910C2E00414898 /* Memo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +401,7 @@
 		};
 		AE449BDF249108F600414898 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 600E3D0C5077A9AE0C944886 /* Pods-FlowApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +420,7 @@
 		};
 		AE449BE0249108F600414898 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 707254104532542CB9E5947F /* Pods-FlowApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -338,6 +459,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AE449BEC2491359000414898 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AE449BED2491359100414898 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE449BEC2491359000414898 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		AE449BEF2491359100414898 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE449BEC2491359000414898 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AE449BC2249108F300414898 /* Project object */;
 }
