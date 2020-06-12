@@ -18,6 +18,7 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var prioritySegment: UISegmentedControl!
     @IBOutlet var uiView: UIView!
     @IBOutlet var textField: UITextField!
+    @IBOutlet var detail: UITextView!
     @IBOutlet var addButton: UIButton!
     
     let memoCollection = MemoCollection.sharedInstance
@@ -35,7 +36,8 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
         let alertView = SCLAlertView(appearance: appearance)
             alertView.showInfo("Info", subTitle: "優先度を選択してタスク管理に役立てよう！\n優先度：😰[⭐️⭐️⭐️⭐️⭐️]\n　　 　  😅[⭐️⭐️⭐️⭐️　  ]\n　 　　  🙂[⭐️⭐️⭐️　  　  ]\n　 　　  🤔[⭐️⭐️　  　  　  ]\n　　　   😪[⭐️　  　  　  　  ]", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
         }
-        textField.placeholder = "Write Somothing"
+        textField.placeholder = "Write Title Memo"
+        textField.layer.borderColor = UIColor.gray.cgColor
         textField.delegate = self
         
         uiView.layer.cornerRadius = 8
@@ -44,6 +46,15 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
         uiView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0) // 上向きの影
         uiView.layer.shadowRadius = 3;
         uiView.layer.shadowOpacity = 0.8;
+        
+        // 枠のカラー
+        detail.layer.borderColor = UIColor.gray.cgColor
+        
+        // 枠の幅
+        detail.layer.borderWidth = 1.0
+        // 枠を角丸にする場合
+        detail.layer.cornerRadius = 10.0
+        detail.layer.masksToBounds = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -68,6 +79,7 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        detail.resignFirstResponder()
         textField.resignFirstResponder()
         
         return true
@@ -90,14 +102,15 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
                 realm.add(createdMemo)
             }
             
-            
             let memo = Memo()
             
             memo.text = textField.text!
+            memo.detail = detail.text!
             memo.priority = MemoPriority(rawValue: prioritySegment.selectedSegmentIndex)!
             self.memoCollection.addMemoCollection(memo: memo)
         
             textField.text = ""
+            detail.text = ""
             
         }
         
