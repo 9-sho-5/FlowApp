@@ -19,7 +19,8 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var uiView: UIView!
     @IBOutlet var textField: UITextField!
     @IBOutlet var detail: UITextView!
-    @IBOutlet var addButton: UIButton!
+//    @IBOutlet var addButton: UIButton!
+    @IBOutlet var placeholder: UILabel!
     
     let memoCollection = MemoCollection.sharedInstance
     
@@ -31,17 +32,17 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
             showCloseButton: false
         )
         let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
-                
+
         }
         let alertView = SCLAlertView(appearance: appearance)
-            alertView.showInfo("Info", subTitle: "優先度を選択してタスク管理に役立てよう！\n優先度：😰[⭐️⭐️⭐️⭐️⭐️]\n　　 　  😅[⭐️⭐️⭐️⭐️　  ]\n　 　　  🙂[⭐️⭐️⭐️　  　  ]\n　 　　  🤔[⭐️⭐️　  　  　  ]\n　　　   😪[⭐️　  　  　  　  ]", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
+            alertView.showInfo("Info", subTitle: "優先度を選択してタスク管理に役立てよう！\n優先度：😰[⭐️⭐️⭐️⭐️⭐️]\n　　 　  😅[⭐️⭐️⭐️⭐️　  ]\n　　 　  🙂[⭐️⭐️⭐️　  　  ]\n　　 　  🤔[⭐️⭐️　     　    ]\n　　 　  😪[⭐️　  　  　  　 ]", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
         }
         textField.placeholder = "Write Title Memo"
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.delegate = self
         
         uiView.layer.cornerRadius = 8
-        addButton.layer.cornerRadius = 8
+//        addButton.layer.cornerRadius = 8
         
         uiView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0) // 上向きの影
         uiView.layer.shadowRadius = 3;
@@ -92,7 +93,7 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func add() {
         if textField.text!.isEmpty {
             
-            SCLAlertView().showError("Error", subTitle: "記述がありません") // Error
+            SCLAlertView().showError("Error", subTitle: "Title Memoの記述がありません") // Error
             
         } else {
             
@@ -108,23 +109,23 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
             memo.detail = detail.text!
             memo.priority = MemoPriority(rawValue: prioritySegment.selectedSegmentIndex)!
             self.memoCollection.addMemoCollection(memo: memo)
-        
+            print(memo.priority)
             textField.text = ""
             detail.text = ""
             
         }
         
+        if memoCollection.memos.count == 1 {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: true
+        )
+        let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
+                
+        }
+        let alertView = SCLAlertView(appearance: appearance)
+            alertView.showInfo("Info", subTitle: "変更するときはMemoをタップして編集してみよう！", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
+        }
     }
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension ViewController: UITextFieldDelegate {

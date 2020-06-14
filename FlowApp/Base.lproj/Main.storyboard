@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--FLOW MEMO-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FlowApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,15 +19,15 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ZJ8-Wc-3P8">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="ZJ8-Wc-3P8">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJ8-Wc-3P8" id="hlU-d7-VXN">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="fme-ze-ylJ" kind="show" identifier="toNextViewController" id="XKi-ti-bbd"/>
+                                            <segue destination="fme-ze-ylJ" kind="show" identifier="toNextViewController" animates="NO" id="XKi-ti-bbd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -42,24 +42,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sQM-Ym-O8n">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="sidebar.left" catalog="system" id="dxY-50-5ze">
+                    <navigationItem key="navigationItem" title="FLOW MEMO" id="sQM-Ym-O8n">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="LeR-AE-uXk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="didTapSort" destination="BYZ-38-t0r" id="AFx-et-xx2"/>
+                            </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="Edit" id="LeR-AE-uXk">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="didTapSort" destination="BYZ-38-t0r" id="AFx-et-xx2"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="square.and.pencil" catalog="system" id="hSN-B1-cfL">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <segue destination="hkn-3s-oN4" kind="presentation" id="Sn5-Xb-bpz"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="hSN-B1-cfL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="hkn-3s-oN4" kind="presentation" id="jp2-nJ-Fa4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="createMemoButton" destination="hSN-B1-cfL" id="h2y-rY-8C9"/>
@@ -80,14 +75,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uIL-IP-mJp">
-                                <rect key="frame" x="40" y="234" width="334" height="618"/>
+                                <rect key="frame" x="40" y="337" width="334" height="375"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQo-08-2Zm">
-                                <rect key="frame" x="131" y="138" width="153" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✍️ Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQo-08-2Zm">
+                                <rect key="frame" x="81" y="293" width="253" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VG-uE-jKC">
+                                <rect key="frame" x="268" y="755" width="106" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="awB-cQ-Bfa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="⏬">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissAddPopup:" destination="fme-ze-ylJ" eventType="touchUpInside" id="SH8-3v-ZY8"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="AMG-AQ-saS">
+                                <rect key="frame" x="40" y="760" width="189" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kkK-WL-Sqi"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="😪"/>
+                                    <segment title="🤔"/>
+                                    <segment title="🙂"/>
+                                    <segment title="😅"/>
+                                    <segment title="😰"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FuR-e3-LsH">
+                                <rect key="frame" x="40" y="232" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📝Title Memo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH3-9z-mHg">
+                                <rect key="frame" x="81" y="158" width="253" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -96,25 +129,40 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="uIL-IP-mJp" secondAttribute="trailing" constant="40" id="4LY-Kf-d7i"/>
-                            <constraint firstItem="3fl-jI-b46" firstAttribute="bottom" secondItem="uIL-IP-mJp" secondAttribute="bottom" constant="10" id="Cak-Cl-Jwj"/>
+                            <constraint firstItem="AMG-AQ-saS" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="40" id="4S9-SO-qna"/>
+                            <constraint firstItem="5VG-uE-jKC" firstAttribute="top" secondItem="uIL-IP-mJp" secondAttribute="bottom" constant="43" id="7Q6-p6-pV7"/>
+                            <constraint firstItem="5VG-uE-jKC" firstAttribute="leading" secondItem="AMG-AQ-saS" secondAttribute="trailing" constant="39" id="8pe-fw-yOu"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="bottom" secondItem="AMG-AQ-saS" secondAttribute="bottom" constant="62" id="AFX-NN-wZZ"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="bottom" secondItem="uIL-IP-mJp" secondAttribute="bottom" constant="150" id="CNo-hO-odu"/>
+                            <constraint firstItem="FuR-e3-LsH" firstAttribute="top" secondItem="IH3-9z-mHg" secondAttribute="bottom" constant="38" id="FHD-of-bTT"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="5VG-uE-jKC" secondAttribute="trailing" constant="40" id="IYK-Cc-H8q"/>
                             <constraint firstItem="uIL-IP-mJp" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="40" id="JLq-5D-EeF"/>
-                            <constraint firstItem="uIL-IP-mJp" firstAttribute="top" secondItem="sQo-08-2Zm" secondAttribute="bottom" constant="60" id="LTC-eN-M89"/>
-                            <constraint firstItem="sQo-08-2Zm" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="131" id="aQc-qF-tze"/>
-                            <constraint firstItem="sQo-08-2Zm" firstAttribute="top" secondItem="3fl-jI-b46" secondAttribute="top" constant="50" id="f95-N3-rHz"/>
-                            <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="sQo-08-2Zm" secondAttribute="trailing" constant="130" id="m9D-kR-Owz"/>
+                            <constraint firstItem="sQo-08-2Zm" firstAttribute="top" secondItem="FuR-e3-LsH" secondAttribute="bottom" constant="27" id="KFe-lc-qWj"/>
+                            <constraint firstItem="IH3-9z-mHg" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="81" id="KSX-bc-lkO"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="IH3-9z-mHg" secondAttribute="trailing" constant="80" id="OBY-xf-L0h"/>
+                            <constraint firstItem="sQo-08-2Zm" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="81" id="aQc-qF-tze"/>
+                            <constraint firstItem="IH3-9z-mHg" firstAttribute="top" secondItem="3fl-jI-b46" secondAttribute="top" constant="70" id="bp8-ec-PKc"/>
+                            <constraint firstItem="sQo-08-2Zm" firstAttribute="top" secondItem="FuR-e3-LsH" secondAttribute="bottom" constant="27" id="giR-2D-q61"/>
+                            <constraint firstItem="AMG-AQ-saS" firstAttribute="top" secondItem="uIL-IP-mJp" secondAttribute="bottom" constant="48" id="h0E-Dp-7kd"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="bottom" secondItem="5VG-uE-jKC" secondAttribute="bottom" constant="57" id="kI0-Wj-Bp9"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="sQo-08-2Zm" secondAttribute="trailing" constant="80" id="m9D-kR-Owz"/>
+                            <constraint firstItem="FuR-e3-LsH" firstAttribute="leading" secondItem="3fl-jI-b46" secondAttribute="leading" constant="40" id="mMt-wE-il0"/>
+                            <constraint firstItem="uIL-IP-mJp" firstAttribute="top" secondItem="sQo-08-2Zm" secondAttribute="bottom" constant="8" id="mRP-Ab-jfD"/>
+                            <constraint firstItem="uIL-IP-mJp" firstAttribute="top" secondItem="sQo-08-2Zm" secondAttribute="bottom" constant="8" id="mm8-gN-biq"/>
+                            <constraint firstItem="3fl-jI-b46" firstAttribute="trailing" secondItem="FuR-e3-LsH" secondAttribute="trailing" constant="40" id="non-LQ-UOa"/>
+                            <constraint firstItem="5VG-uE-jKC" firstAttribute="leading" secondItem="AMG-AQ-saS" secondAttribute="trailing" constant="39" id="ugo-mu-cd5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3fl-jI-b46"/>
                     </view>
                     <navigationItem key="navigationItem" title="Details" id="P0k-9i-yn1">
                         <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.fill" catalog="system" id="BgS-5C-Zya">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="back:" destination="fme-ze-ylJ" id="2fi-yo-tVO"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detail" destination="uIL-IP-mJp" id="JTK-WO-nPK"/>
+                        <outlet property="prioritySegment" destination="AMG-AQ-saS" id="Piu-nm-95N"/>
+                        <outlet property="textField" destination="FuR-e3-LsH" id="jyv-9T-Bna"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IN2-ln-Hi5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -138,7 +186,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUm-k7-yum" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="55.580357142857139"/>
+            <point key="canvasLocation" x="-423" y="56"/>
         </scene>
         <!--Write Popup View Controller-->
         <scene sceneID="05h-NV-FsB">
@@ -167,7 +215,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="add" destination="hkn-3s-oN4" eventType="touchUpInside" id="E6m-wy-0rI"/>
+                                            <action selector="add" destination="hkn-3s-oN4" eventType="touchUpInside" id="4fk-9x-hVY"/>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="n2B-b7-a6B">
@@ -234,7 +282,6 @@
                         <viewLayoutGuide key="safeArea" id="1YN-oj-kyn"/>
                     </view>
                     <connections>
-                        <outlet property="addButton" destination="aH3-DZ-l48" id="jYe-y2-Yau"/>
                         <outlet property="detail" destination="pAz-Cf-SGR" id="AtL-Fc-d85"/>
                         <outlet property="prioritySegment" destination="n2B-b7-a6B" id="gby-fc-7u8"/>
                         <outlet property="textField" destination="Jic-P8-vzh" id="lCW-Tk-xA6"/>
@@ -250,7 +297,6 @@
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
-        <image name="sidebar.left" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="118"/>
     </resources>
 </document>

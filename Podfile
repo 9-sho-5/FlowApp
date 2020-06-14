@@ -6,4 +6,5 @@ target 'FlowApp' do
   use_frameworks!
 
   pod 'SCLAlertView', '~> 0.8'
+pod 'MMPopLabel'
 end

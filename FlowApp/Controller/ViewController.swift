@@ -8,14 +8,16 @@
 
 import UIKit
 import RealmSwift
+import SCLAlertView
+import MMPopLabel
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,MMPopLabelDelegate {
     
-//    @IBOutlet weak var searchButton: UIBarButtonItem!
+    var instroLabel: MMPopLabel!
     @IBOutlet weak var createMemoButton: UIBarButtonItem!
     @IBOutlet var table: UITableView!
     @IBOutlet var editButton: UIBarButtonItem!
-    @IBOutlet var saveButton: UIButton!
+//    @IBOutlet var saveButton: UIButton!
     @IBOutlet weak var priorityFace: UIView!
     
     let memoCollection = MemoCollection.sharedInstance
@@ -26,23 +28,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let realm = try! Realm()
     
     var models:Any = []
-    
-//    @IBOutlet var searchBar: UISearchBar!
-    
-//    var searchMemo = [String]()
-//    var searching = false
-//    var topSafeAreaHeight: CGFloat = 0
-//    private var searchBarHeight: CGFloat = 44
-    
+        
     var notificationToken: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        memoCollection.fetchTodos()
+        MMPopLabel.appearance().labelColor = UIColor.blue
+        // ポップアップの文字色
+        MMPopLabel.appearance().labelTextColor = UIColor.white
+        // ポップアップの文字ハイライト時の色
+        MMPopLabel.appearance().labelTextHighlightColor = UIColor.green
+        // ポップアップの文字フォント
+        MMPopLabel.appearance().labelFont = UIFont(name: "HelveticaNeue-Light", size: 12)
+        // ポップアップのボタンの文字フォント
+        MMPopLabel.appearance().buttonFont = UIFont(name: "HelveticaNeue", size: 12)
         
-//        table.contentOffset = CGPoint(x: 0, y: searchBarHeight)
-//        searchBar.showsCancelButton = false
-//        searchBar.delegate = self
+        instroLabel = MMPopLabel(text: "チュートリアルメッセージ")
+        instroLabel.delegate = self
+        
+        let skipButton = UIButton(frame: CGRect.zero)
+        skipButton.setTitle(NSLocalizedString("Skip Tutorial", comment: "Skip Tutorial Button"), for: .normal)
+        instroLabel.add(skipButton)
+         
+        let okButton = UIButton(frame: CGRect.zero)
+        okButton.setTitle(NSLocalizedString("OK, Got It!", comment: "Dismiss Button"), for: .normal)
+        instroLabel.add(okButton)
+        
+        self.view.addSubview(instroLabel)
+        
+        memoCollection.fetchTodos()
         
         table.delegate = self
         table.dataSource = self
@@ -64,37 +78,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let next = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         //  3. １で用意した遷移先の変数に値を渡す
         next.toDetailViewtext = memo.detail
+        next.totextFieldtext = memo.text
+        next.toPriority = memo.priority.rawValue
         next.index = indexPath.row
         // 4. 画面遷移実行
-//        performSegue(withIdentifier: "toNextViewController", sender: self)
+//        performSegue(withIdentifier: "DetailViewController", sender: self)
+        
         self.present(next, animated: true, completion: nil)
-        
-        
-//        toDetailViewtext = memo.detail
-//        performSegue(withIdentifier: "toNextViewController", sender: self)
-        print(toDetailViewtext)
     }
 
+//表示させるmemoの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
             print(self.memoCollection.memos.count)
             return self.memoCollection.memos.count
 
     }
-    
+    //編集に関する記述
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if (editingStyle == .delete) {
-//
-////            models.remove(at: indexPath.row)
-////            tableView.deleteRows(at: [indexPath], with: .automatic)
-//
-//            self.memoCollection.memos.remove(at: indexPath.row)
-//
-//            UIView.animate(withDuration: 1.5, delay: 0.0, options: [.curveLinear], animations: {
-//                    tableView.deleteRows(at: [indexPath], with: .top)
-//            }, completion: nil)
-//
-//        }
+
         switch editingStyle {
         case .delete:
             self.memoCollection.memos.remove(at: indexPath.row)
@@ -105,6 +107,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    //横スライドでの削除をできなくする
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if tableView.isEditing {
             return .delete
@@ -116,13 +119,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return false
     }
     
+    //memoの数が0になった時に編集中を完了にする
     func tableView(_ tableView: UITableView, didEndDisplaying: UITableViewCell, forRowAt: IndexPath) {
         if self.memoCollection.memos.count == 0{
             editButton.title = "Edit"
             table.isEditing = false
         }
     }
-        
+    
+    //cellの移動を可能にする
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -134,24 +139,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.memoCollection.memos.remove(at: sourceIndexPath.row)
         self.memoCollection.memos.insert(memo, at: destinationIndexPath.row)
         self.memoCollection.save()
-//        models.swapAt(sourceIndexPath.row, sourceIndexPath.row)
-//
-//        let moveObjTmp = models[sourceIndexPath.row]
-//        models.remove(at: sourceIndexPath.row)
-//        models.insert(moveObjTmp, at: destinationIndexPath.row)
     }
         
+    //cellに表示するもの
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
         
-//        if searching {
-//            cell.textLabel?.text = searchMemo[indexPath.row]
-//            let priorityIcon = UILabel(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-//            priorityIcon.layer.cornerRadius = 6
-//            priorityIcon.text = searchMemo[indexPath.row].priority.face()
-//            cell.accessoryView = priorityIcon
-//        } else {
             let memo = self.memoCollection.memos[indexPath.row]
             cell.detailTextLabel!.text = memo.detail
             cell.textLabel?.text = memo.text
@@ -159,37 +152,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             priorityIcon.layer.cornerRadius = 6
             priorityIcon.text = memo.priority.face()
             cell.accessoryView = priorityIcon
-
-//            cell.textLabel?.text = models[indexPath.row]
-//            models.append(memos[indexPath.row].text)
-//        }
         return cell
     }
     
+    //cellの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchBar.setShowsCancelButton(true, animated: true)
-//    }
-//    
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        searchBar.setShowsCancelButton(false, animated: true)
-//    }
-    
-//    @IBAction func leftBarBtnClicked(sender: UIButton) {
-//        // 一瞬で切り替わると不自然なのでアニメーションを付与する
-//        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear], animations: {
-//                self.table.contentOffset = CGPoint(x: 0, y: -self.topSafeAreaHeight)
-//        }, completion: nil)
-//    }
-    
-//    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-//        table.contentOffset = CGPoint(x: 0, y: searchBarHeight)
-//    }
-    
     @IBAction func didTapSort() {
+        let target = editButton
+        instroLabel.pop(at: target)
+        
         if table.isEditing {
             
             editButton.title = "Edit"
@@ -203,24 +177,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
             table.reloadData()
         }
-    
 }
-
-//extension ViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-////        searchMemo = self.memoCollection.memos.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
-//        print(searchText.count)
-//        searching = true
-//        table.reloadData()
-//    }
-//    
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        searching = false
-//        searchBar.text = ""
-//        searchBar.resignFirstResponder()
-//        searchBar.showsCancelButton = false
-//        table.reloadData()
-//    }
-//    
-//    
-//}
