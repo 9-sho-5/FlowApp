@@ -12,3 +12,7 @@ import RealmSwift
 class CreatedMemoClass: Object {
     @objc dynamic var createdAt: Date!
 }
+
+class editCounter: Object {
+    @objc dynamic var createdAt: Date!
+}

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1226C58C2AD0E0B5EA4E8B94 /* Pods_FlowApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E94D10020AC2AF164AEA56 /* Pods_FlowApp.framework */; };
+		AE1FFDBF2495DEF700C5279E /* WritePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BE724910DB200414898 /* WritePopupViewController.swift */; };
 		AE449BCE249108F300414898 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BCD249108F300414898 /* AppDelegate.swift */; };
 		AE449BD0249108F300414898 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BCF249108F300414898 /* SceneDelegate.swift */; };
 		AE449BD2249108F300414898 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE449BD1249108F300414898 /* ViewController.swift */; };
@@ -255,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1FFDBF2495DEF700C5279E /* WritePopupViewController.swift in Sources */,
 				AE449BD2249108F300414898 /* ViewController.swift in Sources */,
 				AE449BCE249108F300414898 /* AppDelegate.swift in Sources */,
 				AE449BEB2491272500414898 /* DB.swift in Sources */,
@@ -416,7 +418,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.kusunose.hosho.FlowApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -435,7 +437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.kusunose.hosho.FlowApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

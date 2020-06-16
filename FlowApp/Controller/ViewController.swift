@@ -9,22 +9,21 @@
 import UIKit
 import RealmSwift
 import SCLAlertView
-import MMPopLabel
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,MMPopLabelDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var instroLabel: MMPopLabel!
+    var identifier: Int = 0
     @IBOutlet weak var createMemoButton: UIBarButtonItem!
     @IBOutlet var table: UITableView!
     @IBOutlet var editButton: UIBarButtonItem!
-//    @IBOutlet var saveButton: UIButton!
-    @IBOutlet weak var priorityFace: UIView!
     
     let memoCollection = MemoCollection.sharedInstance
     var toDetailViewtext: String = ""
     var index = 0
     
     var createdMemoclass: Results<CreatedMemoClass>!
+    var editCount: Results<editCounter>!
+
     let realm = try! Realm()
     
     var models:Any = []
@@ -33,28 +32,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MMPopLabel.appearance().labelColor = UIColor.blue
-        // ポップアップの文字色
-        MMPopLabel.appearance().labelTextColor = UIColor.white
-        // ポップアップの文字ハイライト時の色
-        MMPopLabel.appearance().labelTextHighlightColor = UIColor.green
-        // ポップアップの文字フォント
-        MMPopLabel.appearance().labelFont = UIFont(name: "HelveticaNeue-Light", size: 12)
-        // ポップアップのボタンの文字フォント
-        MMPopLabel.appearance().buttonFont = UIFont(name: "HelveticaNeue", size: 12)
         
-        instroLabel = MMPopLabel(text: "チュートリアルメッセージ")
-        instroLabel.delegate = self
-        
-        let skipButton = UIButton(frame: CGRect.zero)
-        skipButton.setTitle(NSLocalizedString("Skip Tutorial", comment: "Skip Tutorial Button"), for: .normal)
-        instroLabel.add(skipButton)
-         
-        let okButton = UIButton(frame: CGRect.zero)
-        okButton.setTitle(NSLocalizedString("OK, Got It!", comment: "Dismiss Button"), for: .normal)
-        instroLabel.add(okButton)
-        
-        self.view.addSubview(instroLabel)
+        if createdMemoclass.count == 0 {
+            let appearance = SCLAlertView.SCLAppearance (
+                showCloseButton: true
+            )
+        let alertView = SCLAlertView(appearance: appearance)
+            
+            alertView.showInfo("Info", subTitle: "emoji😄を使って\n期限順⬇️にタスク管理しよう！\n\n優先度：😰[⭐️⭐️⭐️⭐️⭐️]\n　　 　  😅[⭐️⭐️⭐️⭐️　  ]\n　　 　  🙂[⭐️⭐️⭐️　  　  ]\n　　 　  🤔[⭐️⭐️　     　    ]\n　　 　  😪[⭐️　  　  　  　 ]")
+        }
         
         memoCollection.fetchTodos()
         
@@ -63,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let realm = try! Realm()
         createdMemoclass = realm.objects(CreatedMemoClass.self)
+        editCount = realm.objects(editCounter.self)
     
         notificationToken = createdMemoclass.observe { [weak self] _ in
             self?.table.reloadData()
@@ -148,8 +135,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let memo = self.memoCollection.memos[indexPath.row]
             cell.detailTextLabel!.text = memo.detail
             cell.textLabel?.text = memo.text
-            let priorityIcon = UILabel(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+            let priorityIcon = UILabel(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
             priorityIcon.layer.cornerRadius = 6
+            priorityIcon.font = priorityIcon.font.withSize(30)
             priorityIcon.text = memo.priority.face()
             cell.accessoryView = priorityIcon
         return cell
@@ -161,8 +149,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func didTapSort() {
-        let target = editButton
-        instroLabel.pop(at: target)
+        
+        if editCount.count == 0 {
+            let appearance = SCLAlertView.SCLAppearance (
+                    showCloseButton: true
+                )
+            let alertView = SCLAlertView(appearance: appearance)
+                
+                alertView.showInfo("Info", subTitle: "⚙️　　　　　機　能　　　　　⚙️\n\nMemoの削除❌　　　　　　　　\nMemoの順番の入れ替え🔀\n\n🤔\n\n⚙️　　　　　　　　　　　　　⚙️")
+            let createdMemo = editCounter()
+            try! realm.write{
+                realm.add(createdMemo)
+            }
+        }
         
         if table.isEditing {
             

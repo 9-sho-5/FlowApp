@@ -46,13 +46,13 @@
                         <barButtonItem key="leftBarButtonItem" title="Edit" id="LeR-AE-uXk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="didTapSort" destination="BYZ-38-t0r" id="AFx-et-xx2"/>
+                                <action selector="didTapSort" destination="BYZ-38-t0r" id="Re8-qj-UDL"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="square.and.pencil" catalog="system" id="hSN-B1-cfL">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="hkn-3s-oN4" kind="presentation" id="jp2-nJ-Fa4"/>
+                                <segue destination="hkn-3s-oN4" kind="presentation" id="6uT-WY-x7z"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -203,7 +203,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFT-tc-9YH">
-                                <rect key="frame" x="10" y="616" width="394" height="250"/>
+                                <rect key="frame" x="10" y="646" width="394" height="250"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aH3-DZ-l48">
                                         <rect key="frame" x="227" y="184" width="135" height="49"/>
@@ -247,7 +247,7 @@
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" keyboardType="twitter"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -272,7 +272,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="MFT-tc-9YH" firstAttribute="leading" secondItem="1YN-oj-kyn" secondAttribute="leading" constant="10" id="2FU-wg-ECU"/>
-                            <constraint firstAttribute="bottom" secondItem="MFT-tc-9YH" secondAttribute="bottom" constant="30" id="3Xa-KJ-w13"/>
+                            <constraint firstAttribute="bottom" secondItem="MFT-tc-9YH" secondAttribute="bottom" id="3Xa-KJ-w13"/>
                             <constraint firstItem="mqq-Eq-fJy" firstAttribute="top" secondItem="1YN-oj-kyn" secondAttribute="top" id="AMU-P8-ihI"/>
                             <constraint firstItem="mqq-Eq-fJy" firstAttribute="leading" secondItem="1YN-oj-kyn" secondAttribute="leading" id="JZs-6S-hpT"/>
                             <constraint firstItem="mqq-Eq-fJy" firstAttribute="trailing" secondItem="1YN-oj-kyn" secondAttribute="trailing" id="MUv-Xc-Bax"/>

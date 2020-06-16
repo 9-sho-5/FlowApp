@@ -26,17 +26,18 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if memoCollection.memos.count == 0 {
-        let appearance = SCLAlertView.SCLAppearance(
+        let appearance = SCLAlertView.SCLAppearance (
             showCloseButton: false
         )
         let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
 
         }
         let alertView = SCLAlertView(appearance: appearance)
-            alertView.showInfo("Info", subTitle: "優先度を選択してタスク管理に役立てよう！\n優先度：😰[⭐️⭐️⭐️⭐️⭐️]\n　　 　  😅[⭐️⭐️⭐️⭐️　  ]\n　　 　  🙂[⭐️⭐️⭐️　  　  ]\n　　 　  🤔[⭐️⭐️　     　    ]\n　　 　  😪[⭐️　  　  　  　 ]", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
+            
+            alertView.showInfo("Info", subTitle: "オリジナルMemo📝目指して\nさっそくMemoを書いてみよう！\n\n🤓\nTitle Memoは必須✅\n詳細も加えてわかりやすく✍️", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
         }
+        
         textField.placeholder = "Write Title Memo"
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.delegate = self
@@ -87,6 +88,16 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func dismissAddPopup(_ sender: Any) {
+        if memoCollection.memos.count == 1 {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: true
+        )
+        let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
+                
+        }
+        let alertView = SCLAlertView(appearance: appearance)
+            alertView.showInfo("Info", subTitle: "変更するときはMemoをタップして編集してみよう！", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -113,17 +124,6 @@ class WritePopupViewController: UIViewController, UITextFieldDelegate {
             textField.text = ""
             detail.text = ""
             
-        }
-        
-        if memoCollection.memos.count == 1 {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: true
-        )
-        let timeoutAction: SCLAlertView.SCLTimeoutConfiguration.ActionType = {
-                
-        }
-        let alertView = SCLAlertView(appearance: appearance)
-            alertView.showInfo("Info", subTitle: "変更するときはMemoをタップして編集してみよう！", timeout:SCLAlertView.SCLTimeoutConfiguration(timeoutValue: 5.0, timeoutAction:timeoutAction))
         }
     }
 }
