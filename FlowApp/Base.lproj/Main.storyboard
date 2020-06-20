@@ -43,7 +43,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="FLOW MEMO" id="sQM-Ym-O8n">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="LeR-AE-uXk">
+                        <barButtonItem key="leftBarButtonItem" title="🔀" id="LeR-AE-uXk">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="didTapSort" destination="BYZ-38-t0r" id="Re8-qj-UDL"/>

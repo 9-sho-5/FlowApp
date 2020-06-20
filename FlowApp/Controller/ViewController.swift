@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if createdMemoclass.count == 0 {
+        if self.memoCollection.memos.count == 0 {
             let appearance = SCLAlertView.SCLAppearance (
                 showCloseButton: true
             )
@@ -165,7 +165,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if table.isEditing {
             
-            editButton.title = "Edit"
+            editButton.title = "🔀"
             table.isEditing = false
             
         } else {
